@@ -1,6 +1,7 @@
 package ScreenCapture;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 
@@ -26,29 +27,37 @@ public class APIForScreenShot {
 		}
 		else
 		{
+			
 			throw new EmptyPathException("URI Can not be empty");
 		}
 		
 		driver.manage().window().maximize();
 		Screenshot screenshot=new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000)).takeScreenshot(driver);             
 		File file1 = null;
-		if(screenShotPath.length()>0)
-		{
-			file1= new File(screenShotPath);
-		}
-		else
-		{
-			throw new EmptyPathException("File path of ScreenShot can not be empty");
-		}
 		
-		
-		try {
-			ImageIO.write(screenshot.getImage(),"PNG",file1);
-		} catch (IOException e1) {
+		try 
+		{
+			if(screenShotPath.length()>0)
+			{
+				file1= new File(screenShotPath);
+				ImageIO.write(screenshot.getImage(),"PNG",file1);
+			}
+			else
+			{
+				throw new EmptyPathException("File path of ScreenShot can not be empty");
+			}
+			
+		} catch (IOException e1 ) {
 			// TODO Auto-generated catch block
+			
+			throw new IncorrectFilePathException(e1.getMessage());
+		}
+		catch(NullPointerException e1)
+		{
 			throw new IncorrectFilePathException(e1.getMessage());
 		}
 		finally {
+			
 			driver.close();
 		}
 	
