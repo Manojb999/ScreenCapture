@@ -9,4 +9,8 @@ If anyone wants to use the application as Java API follow below steps : -
 2.  Call the method 
 	APIForScreenShot apiForScreenShot = new APIForScreenShot();
 	apiForScreenShot.getScreenShot("Path where you want keep the ScreenShot image","URL of a webpage which you want take a ScreenShot")
+	
+	
+	
+Please find the sample screenshot in ScreenShotCaptureAPI\Page.PNG
 
