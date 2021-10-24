@@ -19,24 +19,37 @@ import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
 
 public class APIForScreenShot {
 	public void getScreenShot(String screenShotPath ,String uri) throws EmptyPathException, IncorrectFilePathException {
+		
+		/*
+		 * Will create a ChromeDriver object
+		 */
 		WebDriverManager.chromedriver().setup();
 		WebDriver driver = new ChromeDriver();
+		
+		/*
+		 * Checking if the URI is empty if yes will throw EmptyPathException
+		 */
 		if(uri.length()>0)
 		{
 			driver.get(uri);
 		}
 		else
 		{
-			
 			throw new EmptyPathException("URI Can not be empty");
 		}
 		
-		driver.manage().window().maximize();
+		/*
+		 * Below line create a screen shot object for fullpage and will 
+		 */
 		Screenshot screenshot=new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000)).takeScreenshot(driver);             
 		File file1 = null;
 		
 		try 
 		{
+			/*
+			 * Checking if the Image Path is empty if yes will throw EmptyPathException
+			 * if path is not there it will throw IncorrectFilePathException 
+			 */
 			if(screenShotPath.length()>0)
 			{
 				file1= new File(screenShotPath);

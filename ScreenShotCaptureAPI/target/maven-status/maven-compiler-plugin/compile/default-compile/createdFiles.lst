@@ -1,0 +1,4 @@
+Exception\EmptyPathException.class
+Exception\IncorrectFilePathException.class
+ScreenCapture\ScreenCapture.class
+ScreenCapture\APIForScreenShot.class

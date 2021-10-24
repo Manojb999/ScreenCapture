@@ -10,7 +10,7 @@ public class ScreenCapture {
 		
 		APIForScreenShot apiForScreenShot = new APIForScreenShot();
 		try {
-			apiForScreenShot.getScreenShot("C:\\Users\\Maop\\Try\\Page.PNG","https://en.wikipedia.org/wiki/Java_(programming_language)");
+			apiForScreenShot.getScreenShot("C:\\Users\\Manoj Baviskar\\Desktop\\Try\\Page.PNG","https://en.wikipedia.org/wiki/Java_(programming_language)");
 		} catch (EmptyPathException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
